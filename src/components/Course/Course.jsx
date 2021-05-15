@@ -27,7 +27,7 @@ const Course = ({ authors, id, img, isUserContext = false, price, title }) => {
         history.push("/my-courses")
       }
     } catch (error) {
-      console.warn(erorr)
+      console.warn(error)
     }
   }
 
@@ -37,7 +37,7 @@ const Course = ({ authors, id, img, isUserContext = false, price, title }) => {
       <article className={block()}>
         <h3 className={block("title")}>{title}</h3>
         <img src={img} alt='title' className={block("image")} />
-        <p className={block("price")}>{`Koszt kursu: ${price}`}</p>
+        <p className={block("price")}>{`Koszt kursu: ${price} zł`}</p>
         <p className={block("authors")}>{`Autorzy kursu: ${allAuthors}`}</p>
         {shouldBeBuyButtonVisible && (
           <button onClick={handleOnClick}>Kup ten kurs</button>
