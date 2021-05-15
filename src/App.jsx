@@ -1,11 +1,20 @@
 import React from "react"
-import StoreProvider from "./stores/StoreProvider"
-import "./App.scss"
+import { HashRouter as Router } from "react-router-dom"
+
+import AsideMenu from "./components/AsideMenu/AsideMenu"
 import Header from "./components/Header"
+import StoreProvider from "./stores/StoreProvider"
+
+import "./App.scss"
 
 const App = () => (
   <StoreProvider>
     <Header />
+    <Router>
+      <div className='content-wrapper'>
+        <AsideMenu />
+      </div>
+    </Router>
   </StoreProvider>
 )
 
