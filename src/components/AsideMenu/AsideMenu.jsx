@@ -18,8 +18,10 @@ const AsideMenu = () => {
 
   return (
     <section className={block()}>
-      <UserMenu isUserLogged={Boolean(user)} />
-      {adminMenuComponent}
+      <div className={block("nav-wrapper")}>
+        <UserMenu isUserLogged={Boolean(user)} />
+        {adminMenuComponent}
+      </div>
     </section>
   )
 }
