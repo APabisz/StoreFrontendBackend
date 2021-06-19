@@ -9,23 +9,45 @@ const block = bemCssModules(HeaderStyles)
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const { user, setUser } = useContext(StoreContext)
-  const setProperlyLabel = Boolean(user) ? "Wyloguj się" : "Zaloguj się"
+  const setProperlyLabel = Boolean(user) ? "Log out" : "Log in"
 
   const handleOnClose = () => setIsModalOpen(false)
 
-  const handleOnClick = () => {
-    if (Boolean(user)) {
-      setUser(null)
-    } else {
-      setIsModalOpen(true)
+  const handleOnClick = (e) => {
+    switch (e.target.id) {
+      case "btn-log": {
+        if (Boolean(user)) {
+          setUser(null)
+        } else {
+          setIsModalOpen(true)
+        }
+        break
+      }
+
+      case "btn-reg": {
+        setIsModalOpen(true)
+        break
+      }
     }
   }
+
+  const registerButton = Boolean(user) ? null : (
+    <button id='btn-reg' className={block("btn")} onClick={handleOnClick}>
+      Register
+    </button>
+  )
+
   return (
     <header className={block("")}>
-      <div className={block("logo-wrapper")} />
-      <h1 className={block("title")}>Polecane kursy dla programistów</h1>
-      <button onClick={handleOnClick}>{setProperlyLabel}</button>
-      <LoginForm handleOnClose={handleOnClose} isModalOpen={isModalOpen} />
+      <div className={block("wrapper")}>
+        <div className={block("logo-wrapper")} />
+        <h1 className={block("title")}>E-learning</h1>
+        {registerButton}
+        <button id='btn-log' className={block("btn")} onClick={handleOnClick}>
+          {setProperlyLabel}
+        </button>
+        <LoginForm handleOnClose={handleOnClose} isModalOpen={isModalOpen} />
+      </div>
     </header>
   )
 }

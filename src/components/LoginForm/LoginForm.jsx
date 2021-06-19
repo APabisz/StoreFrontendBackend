@@ -12,7 +12,9 @@ const block = bemCssModules(LoginFormStyles)
 const LoginForm = ({ handleOnClose, isModalOpen }) => {
   const [login, setLogin] = useState("")
   const [password, setPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
   const [validateMessage, setValidateMessage] = useState("")
+  const [formType, setFormType] = useState("")
   const { setUser } = useContext(StoreContext)
 
   const handleInputLoginChange = ({ target: { value } }) => {
@@ -21,6 +23,10 @@ const LoginForm = ({ handleOnClose, isModalOpen }) => {
 
   const handleInputPasswordChange = ({ target: { value } }) => {
     setPassword(value)
+  }
+
+  const handleInputConfirmPasswordChange = ({ target: { value } }) => {
+    setConfirmPassword(value)
   }
 
   const handleOnCloseModal = (e) => {
@@ -34,9 +40,36 @@ const LoginForm = ({ handleOnClose, isModalOpen }) => {
     setValidateMessage("")
   }
 
+  const validateForm = () => {
+    if (!(login.length > 0) || !(password.length > 0)) {
+      const err = "You have to insert login and password to continue"
+      setValidateMessage(err)
+      return false
+    }
+
+    if (password.length < 5) {
+      const err = "Password must have at least 5 signs"
+      setValidateMessage(err)
+      return false
+    }
+
+    if (password !== confirmPassword && formType === "register") {
+      const err = "Passwords aren't equal"
+      setValidateMessage(err)
+      return false
+    }
+
+    return true
+  }
   const handleOnSubmit = async (e) => {
     e.preventDefault()
-    const { data, status } = await request.post("./users", { login, password })
+
+    if (!validateForm()) return
+    const { data, status } = await request.post("./users", {
+      login,
+      password,
+      formType,
+    })
 
     if (status === 200) {
       setUser(data.user)
@@ -57,11 +90,30 @@ const LoginForm = ({ handleOnClose, isModalOpen }) => {
     <p className={block("validate-message")}>{validateMessage}</p>
   ) : null
 
+  const handleSetButtonText = (btn) => {
+    btn === "btn-reg" ? setFormType("register") : setFormType("login")
+  }
+
+  const validatePasswordComponent =
+    formType === "register" ? (
+      <div className={block("row")}>
+        <label>
+          Confirm password
+          <input
+            type='password'
+            value={confirmPassword}
+            onChange={handleInputConfirmPasswordChange}
+          />
+        </label>
+      </div>
+    ) : null
+
   return (
     <Modal
       handleOnClose={handleOnClose}
       isOpen={isModalOpen}
       shouldBeCloseOnOutsideClick={true}
+      handleSetButtonText={handleSetButtonText}
     >
       <form className={block()} method='post' onSubmit={handleOnSubmit}>
         {validateMessageComponent}
@@ -77,7 +129,7 @@ const LoginForm = ({ handleOnClose, isModalOpen }) => {
         </div>
         <div className={block("row")}>
           <label>
-            Hasło
+            Password:
             <input
               type='password'
               value={password}
@@ -85,10 +137,17 @@ const LoginForm = ({ handleOnClose, isModalOpen }) => {
             />
           </label>
         </div>
+        {validatePasswordComponent}
         <div className={block("row")}>
-          <button type='submit'>Zaloguj</button>
-          <button type='button' onClick={handleOnCloseModal}>
-            Anuluj
+          <button className={block("btn-submit")} type='submit'>
+            {formType === "register" ? "Register" : "Log in"}
+          </button>
+          <button
+            className={block("btn-cancel")}
+            type='button'
+            onClick={handleOnCloseModal}
+          >
+            Cancel
           </button>
         </div>
       </form>

@@ -11,6 +11,7 @@ const Modal = ({
   handleOnClose,
   isOpen,
   shouldBeCloseOnOutsideClick,
+  handleSetButtonText = null,
 }) => {
   const modalRef = useRef(null)
   const previuosActiveElement = useRef(null)
@@ -22,6 +23,8 @@ const Modal = ({
     const { current: modal } = modalRef
     if (isOpen) {
       previuosActiveElement.current = document.activeElement
+      if (handleSetButtonText !== null)
+        handleSetButtonText(previuosActiveElement.current.id)
       modal.showModal()
     } else if (previuosActiveElement.current) {
       modal.close()
