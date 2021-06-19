@@ -3,22 +3,58 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 10;
-  display: flex;
-  height: 60px;
-  background-color: #ddd;
-  border-bottom: 2px solid #000;
+  border-bottom: 2px solid #0F0F0F;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  background-color: #0F0F0F;
+  z-index: 10;
+
+  &__wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+    align-items: center;
+    display: flex;
+    height: 80px;
+    padding: 10px 20px;
+    color: #fff;
+  }
 
   &__logo-wrapper {
     width: 60px;
     height: 60px;
-    background-color: #438756;
+    background: url('../../assets/logo.png');
+    background-size: contain;
   }
 
   &__title {
-    margin-left: 20px;
+    margin-left: 5%;
     align-self: center;
+    font-weight: 700;
+    text-transform: uppercase;
     flex-grow: 1;
+    letter-spacing: 1px;
+    font-family: 'Dosis', Arial, Helvetica, sans-serif;
+  }
+
+  &__btn {
+    display: block;
+    height: 36px;
+    padding: 0px 18px;
+    border: 1px solid #ff8248;
+    border-radius: 18px;
+    margin: 0 5px;
+    background-color: transparent;
+    line-height: 130%;
+    letter-spacing: 1px;
+    word-spacing: 2px;
+    color: #ff8248;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .2s;
+
+    &:hover {
+      color: #fff;
+      border-color: #bb4f21;
+      background-color: #bb4f21;
+    }
   }
 }

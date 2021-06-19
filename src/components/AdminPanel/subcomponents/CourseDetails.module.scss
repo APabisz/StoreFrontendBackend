@@ -1,0 +1,37 @@
+.details {
+  color: white;
+  padding: 10px;
+
+  &__title {
+    color: #fff;
+  }
+
+  &__btn-edit,
+  &__btn-delete {
+    padding: 5px 20px;
+    color: #fff;
+    border-radius: 10px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 1em;
+  }
+
+  &__btn-edit {
+    border: 1px solid #ff8248;
+    background-color: #1a1a1a;
+
+    &:hover {
+      background-color: lighten(#1a1a1a, 10%);
+    }
+  }
+
+  &__btn-delete {
+    border: 1px solid #c12525;
+    background-color: #c12525;
+
+    &:hover {
+      border-color: lighten(#c12525, 10%);
+      background-color: lighten(#c12525, 10%);
+    }
+  }
+}

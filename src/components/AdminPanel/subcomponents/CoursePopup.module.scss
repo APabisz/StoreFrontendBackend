@@ -1,18 +1,114 @@
 .course-popup {
   display: flex;
   flex-direction: column;
+  color: #fff;
+  padding: 10px 20px;
 
   &__form {
+    padding: 10px;
     display: flex;
     flex-direction: column;
   }
 
   &__form-row {
     display: flex;
+    margin-top: 10px;
   }
 
   &__input {
     display: flex;
     flex-grow: 1;
+    min-width: 200px;
+    padding: 6px;
+    border: none;
+    border-radius: 2px;
+    margin-top: 3px;
+
+    &:focus-visible {
+      outline-color: #ff8248;
+    }
+  }
+
+  &__btn-submit,
+  &__btn-cancel {
+    padding: 5px 20px;
+    color: #fff;
+    border-radius: 10px;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 1em;
+  }
+
+  &__btn-submit {
+    border: 1px solid #bb4f21;
+    background-color: #bb4f21;
+    margin-top: 20px;
+
+    &:hover {
+      border-color: lighten(#bb4f21, 10%);
+      background-color: lighten(#bb4f21, 10%);
+    }
+  }
+
+  &__btn-cancel {
+    border: 1px solid lighten(#1f1f1f, 10%);
+    margin-top: 10px;
+
+    &:hover {
+      background-color: lighten(#1f1f1f, 10%);
+    }
+  }
+
+  &__author-list {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__author-item {
+    display: flex;
+    padding: 5px 0;
+
+    justify-content: space-between;
+  }
+
+  &__author-name {
+    padding: 0 5px;
+  }
+
+  &__btn-add-author {
+    width: 100%;
+    padding: 2px 6px;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    border: 1px solid #ff8248;
+    background-color: #0f0f0f;
+    margin-top: 10px;
+
+    &:hover {
+      background-color: lighten(#0f0f0f, 10%);
+    }
+
+
+  }
+
+  &__btn-delete-author {
+
+    padding: 2px 6px;
+    color: #fff;
+    border-radius: 6px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    border: 1px solid #c12525;
+    background-color: #c12525;
+
+    &:hover {
+      border-color: lighten(#c12525, 10%);
+      background-color: lighten(#c12525, 10%);
+    }
+
   }
 }

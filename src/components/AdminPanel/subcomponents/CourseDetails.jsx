@@ -1,7 +1,12 @@
 import React, { useContext, useState } from "react"
 import request from "../../../helpers/request"
+import bemCssModules from "bem-css-modules"
+
 import { StoreContext } from "../../../stores/StoreProvider"
 import CoursePopup from "./CoursePopup"
+import { default as CourseDetailsStyles } from "./CourseDetails.module.scss"
+
+const block = bemCssModules(CourseDetailsStyles)
 
 const CourseDetails = (props) => {
   const [isOpenPopup, setIsOpenPopup] = useState(false)
@@ -31,10 +36,14 @@ const CourseDetails = (props) => {
   }
 
   return (
-    <details>
-      <summary>{title}</summary>
-      <button onClick={showPopup}>Edytuj</button>
-      <button onClick={handleDeleteCourse}>Usuń</button>
+    <details className={block()}>
+      <summary className={block("title")}>{title}</summary>
+      <button className={block("btn-edit")} onClick={showPopup}>
+        Edit
+      </button>
+      <button className={block("btn-delete")} onClick={handleDeleteCourse}>
+        Delete
+      </button>
       <CoursePopup hidePopup={hidePopup} isOpenPopup={isOpenPopup} {...props} />
     </details>
   )

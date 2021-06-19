@@ -69,15 +69,19 @@ const CoursePopup = ({
   }
 
   const authorsElements = formAuthors.map((author) => (
-    <li key={author}>
-      <p>{author}</p>
-      <button data-author={author} onClick={deleteAuthor}>
-        Usuń
+    <li className={block("author-item")} key={author}>
+      <p className={block("author-name")}>{author}</p>
+      <button
+        className={block("btn-delete-author")}
+        data-author={author}
+        onClick={deleteAuthor}
+      >
+        Delete
       </button>
     </li>
   ))
 
-  const correctLabel = isEditMode ? "Aktualizuj kurs" : "Utwórz kurs"
+  const correctLabel = isEditMode ? "Update course" : "Create new course"
 
   return (
     <Modal handleOnClose={hidePopup} isOpen={isOpenPopup}>
@@ -89,19 +93,21 @@ const CoursePopup = ({
         >
           <div className={block("form-row")}>
             <label>
-              Autor:
+              Author:
               <input
                 className={block("input")}
                 onChange={handleOnChangeAuthor}
                 type='text'
                 value={formAuthor}
               />
-              <button onClick={addAuthor}>Dodaj autora</button>
+              <button className={block("btn-add-author")} onClick={addAuthor}>
+                Add author
+              </button>
             </label>
           </div>
           <div className={block("form-row")}>
             <label>
-              Obrazek url:
+              Image url:
               <input
                 className={block("input")}
                 onChange={handleOnChangeImg}
@@ -112,7 +118,7 @@ const CoursePopup = ({
           </div>
           <div className={block("form-row")}>
             <label>
-              Cena:
+              Price:
               <input
                 className={block("input")}
                 onChange={handleOnChangePrice}
@@ -123,7 +129,7 @@ const CoursePopup = ({
           </div>
           <div className={block("form-row")}>
             <label>
-              Tytuł:
+              Title:
               <input
                 className={block("input")}
                 onChange={handleOnChangeTitle}
@@ -132,12 +138,18 @@ const CoursePopup = ({
               />
             </label>
           </div>
-          <button type='submit'>{correctLabel}</button>
-          <button type='button' onClick={hidePopup}>
-            Anuluj
+          <button className={block("btn-submit")} type='submit'>
+            {correctLabel}
+          </button>
+          <button
+            className={block("btn-cancel")}
+            type='button'
+            onClick={hidePopup}
+          >
+            Cancel
           </button>
         </form>
-        <ul>{authorsElements}</ul>
+        <ul className={block("author-list")}>{authorsElements}</ul>
       </div>
     </Modal>
   )

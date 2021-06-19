@@ -1,14 +1,29 @@
 .course-card {
-  margin-bottom: 20px;
-  padding: 15px 0;
+  max-width: 350px;
   display: flex;
   flex-direction: column;
-  background-color: #ddd;
-  border-radius: 5px;
+  align-items: center;
+  height: 100%;
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  color: white;
+  background-color: #1c1c1c; //#1f1f1f;
 
   &__title {
+    margin-bottom: 30px;
     text-align: center;
-    margin-bottom: 10px;
+  }
+
+  &__image-wrapper {
+    display: flex;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    min-height: 150px;
+    max-height: 250px;
+    // box-shadow: 0 0 1px 0 #ddd;
+    // background-color: #fff;
+    flex-grow: 100;
   }
 
   &__image {
@@ -16,8 +31,41 @@
     height: auto;
   }
 
-  &__price,
+  &__btn-buy {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    margin-top: 20px;
+    border-radius: 6px;
+    color: #fff;
+    background-color: #bb4f21;
+    font-size: 1em;
+    text-align: center;
+    cursor: pointer;
+
+    &:hover {
+      background-color: lighten(#bb4f21, 10%);
+    }
+  }
+
+  &__price {
+    margin-top: 10px;
+    text-align: center;
+  }
+
   &__authors {
-    margin: 10px 0 0 15px
+    flex-grow: 1;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  &__bought {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 6px;
+    text-align: center;
+    background-color: #2a2a2a;
+    cursor: default;
   }
 }

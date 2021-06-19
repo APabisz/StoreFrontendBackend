@@ -9,11 +9,11 @@ const block = bemCssModules(AsideMenuStyles)
 const AdminMenu = () => {
   return (
     <>
-      <p className={block("title")}>Panel Administratora</p>
+      <p className={block("title")}>Admin Panel</p>
       <nav>
         <ul className={block("list")}>
           <li className={block("link")}>
-            <Link to='/manage-courses'>Zarządzanie kursami</Link>
+            <Link to='/manage-courses'>Manage courses</Link>
           </li>
         </ul>
       </nav>

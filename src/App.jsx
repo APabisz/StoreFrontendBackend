@@ -12,9 +12,11 @@ const App = () => (
   <StoreProvider>
     <Header />
     <Router>
-      <div className='content-wrapper'>
-        <AsideMenu />
-        <Content />
+      <div className='main-wrapper'>
+        <div className='content-wrapper'>
+          <AsideMenu />
+          <Content />
+        </div>
       </div>
     </Router>
   </StoreProvider>

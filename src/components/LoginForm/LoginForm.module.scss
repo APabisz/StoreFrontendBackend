@@ -1,14 +1,62 @@
 .login-form {
   display: flex;
   flex-direction: column;
+  padding: 30px 45px;
+  color: #fff;
+  background-color: #1f1f1f;
 
   &__validate-message {
-    color: #f00;
+    color: #ff8248;
   }
 
   &__row {
     margin-top: 10px;
     display: flex;
+    justify-content: flex-end;
+
+    & input {
+      margin-left: 10px;
+      padding: 2px 5px;
+      min-width: 150px;
+      border: none;
+      border-radius: 2px;
+    }
+
+    & input:focus-visible {
+      outline-color: #ff8248;
+    }
+  }
+
+  &__row:last-of-type {
     justify-content: space-around;
+  }
+
+  &__btn-submit,
+  &__btn-cancel {
+    padding: 5px 20px;
+    color: #fff;
+    border-radius: 10px;
+    margin-top: 20px;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 1em;
+  }
+
+  &__btn-submit {
+    border: 1px solid #bb4f21;
+    background-color: #bb4f21;
+
+    &:hover {
+      border-color: lighten(#bb4f21, 10%);
+      background-color: lighten(#bb4f21, 10%);
+    }
+  }
+
+  &__btn-cancel {
+    border: 1px solid lighten(#1f1f1f, 10%);
+
+    &:hover {
+      background-color: lighten(#1f1f1f, 10%);
+    }
   }
 }

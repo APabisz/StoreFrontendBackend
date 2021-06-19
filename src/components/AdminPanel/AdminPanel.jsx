@@ -2,6 +2,10 @@ import React, { useContext, useState } from "react"
 import { StoreContext } from "../../stores/StoreProvider"
 import CourseDetails from "./subcomponents/CourseDetails"
 import CoursePopup from "./subcomponents/CoursePopup"
+import bemCssModules from "bem-css-modules"
+import { default as AdminPanelStyles } from "./AdminPanel.module.scss"
+
+const block = bemCssModules(AdminPanelStyles)
 
 const AdminPanel = () => {
   const [isOpenPopup, setIsOpenPopup] = useState(false)
@@ -21,9 +25,11 @@ const AdminPanel = () => {
   ))
 
   return (
-    <section>
+    <section className={block()}>
       {coursesElements}
-      <button onClick={showPopup}>Dodaj nowy kurs</button>
+      <button className={block("btn-add")} onClick={showPopup}>
+        Dodaj nowy kurs
+      </button>
       <CoursePopup
         isOpenPopup={isOpenPopup}
         hidePopup={hidePopup}
