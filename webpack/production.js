@@ -31,7 +31,7 @@ module.exports = {
       {
         test: /\.(s(a|c)ss|css)$/,
         exclude: /\.module.(s(a|c)ss)$/,
-        loader: [
+        use: [
           MiniCssExtractPlugin.loader,
           "css-loader",
           {
@@ -49,7 +49,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "style.[contenthash:6].css",
       chunkFilename: "style.[contenthash:6].css",
-      publicPath: "./",
     }),
   ],
 }
