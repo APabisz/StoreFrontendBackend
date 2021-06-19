@@ -149,6 +149,7 @@ const CoursePopup = ({
             Cancel
           </button>
         </form>
+        <div className={block("author-title")}>Current authors:</div>
         <ul className={block("author-list")}>{authorsElements}</ul>
       </div>
     </Modal>
