@@ -8,14 +8,29 @@ import { default as CoursesStyles } from "./Courses.module.scss"
 const block = bemCssModules(CoursesStyles)
 
 const Courses = () => {
-  const { courses } = useContext(StoreContext)
+  const { user, courses } = useContext(StoreContext)
+  const isUserLogged = Boolean(user)
 
-  const coursesElements = courses.map((course) => (
-    <Course key={course.id} {...course} />
-  ))
+  // const coursesElements = courses.map((course) => (
+  //   <Course key={course.id} {...course} />
+  // ))
+
+  // .filter((course) => user.courses.includes(course.id))
+  const coursesElements = courses.map((course) => {
+    let isBought = false
+    if (isUserLogged) isBought = user.courses.includes(course.id)
+    return (
+      <Course
+        isBought={isBought}
+        isUserContext={false}
+        key={course.id}
+        {...course}
+      />
+    )
+  })
   return (
-    <section>
-      <h2 className={block("title")}></h2>
+    <section className={block()}>
+      <h2 className={block("title")}>Available courses</h2>
       <ul className={block("list")}>{coursesElements}</ul>
     </section>
   )

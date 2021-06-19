@@ -9,7 +9,15 @@ import { default as CourseStyles } from "./Course.module.scss"
 
 const block = bemCssModules(CourseStyles)
 
-const Course = ({ authors, id, img, isUserContext = false, price, title }) => {
+const Course = ({
+  authors,
+  id,
+  img,
+  isBought = false,
+  isUserContext = false,
+  price,
+  title,
+}) => {
   const { user, setUser } = useContext(StoreContext)
   const history = useHistory()
 
@@ -31,16 +39,25 @@ const Course = ({ authors, id, img, isUserContext = false, price, title }) => {
     }
   }
 
-  const shouldBeBuyButtonVisible = isUserLogged && !isUserContext
+  const shouldBeBuyButtonVisible = isUserLogged && !isUserContext && !isBought
+  const shouldBeAlreadyBoughtTextVisible =
+    isUserLogged && !isUserContext && isBought
   return (
     <li>
       <article className={block()}>
         <h3 className={block("title")}>{title}</h3>
-        <img src={img} alt='title' className={block("image")} />
-        <p className={block("price")}>{`Koszt kursu: ${price} zł`}</p>
-        <p className={block("authors")}>{`Autorzy kursu: ${allAuthors}`}</p>
+        <div className={block("image-wrapper")}>
+          <img src={img} alt='title' className={block("image")} />
+        </div>
+        <p className={block("price")}>{`Price: ${price} zł`}</p>
+        <p className={block("authors")}>{`Authors: ${allAuthors}`}</p>
         {shouldBeBuyButtonVisible && (
-          <button onClick={handleOnClick}>Kup ten kurs</button>
+          <button className={block("btn-buy")} onClick={handleOnClick}>
+            Buy now
+          </button>
+        )}
+        {shouldBeAlreadyBoughtTextVisible && (
+          <p className={block("bought")}>{`Already bought`}</p>
         )}
       </article>
     </li>

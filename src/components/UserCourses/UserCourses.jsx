@@ -13,12 +13,17 @@ const UserCourses = () => {
   const buyedCourses = courses
     .filter((course) => user.courses.includes(course.id))
     .map((course) => (
-      <Course isUserContext={true} key={course.id} {...course} />
+      <Course
+        isBought={true}
+        isUserContext={true}
+        key={course.id}
+        {...course}
+      />
     ))
 
   return (
     <section className={block()}>
-      <h2 className={block("title")}>Twoje wykupione kursy</h2>
+      <h2 className={block("title")}>Courses bought by you</h2>
       <ul className={block("list")}>{buyedCourses}</ul>
     </section>
   )
