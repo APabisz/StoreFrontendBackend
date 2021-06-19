@@ -5520,8 +5520,9 @@ const AdminMenu = () => {
     className: AdminMenu_block("list")
   }, /*#__PURE__*/react.createElement("li", {
     className: AdminMenu_block("link")
-  }, /*#__PURE__*/react.createElement(Link, {
-    to: "/manage-courses"
+  }, /*#__PURE__*/react.createElement(NavLink, {
+    to: "/manage-courses",
+    activeClassName: "is-active"
   }, "Manage courses")))));
 };
 
@@ -5774,7 +5775,7 @@ const Modal = ({
 /* harmony default export */ const Modal_Modal = (Modal);
 ;// CONCATENATED MODULE: ./src/components/AdminPanel/subcomponents/CoursePopup.module.scss
 // extracted by mini-css-extract-plugin
-/* harmony default export */ const CoursePopup_module = ({"course-popup":"course-popup","course-popup__form":"course-popup__form","course-popup__form-row":"course-popup__form-row","course-popup__input":"course-popup__input","course-popup__btn-submit":"course-popup__btn-submit","course-popup__btn-cancel":"course-popup__btn-cancel","course-popup__author-list":"course-popup__author-list","course-popup__author-item":"course-popup__author-item","course-popup__author-name":"course-popup__author-name","course-popup__btn-add-author":"course-popup__btn-add-author","course-popup__btn-delete-author":"course-popup__btn-delete-author"});
+/* harmony default export */ const CoursePopup_module = ({"course-popup":"course-popup","course-popup__form":"course-popup__form","course-popup__form-row":"course-popup__form-row","course-popup__input":"course-popup__input","course-popup__btn-submit":"course-popup__btn-submit","course-popup__btn-cancel":"course-popup__btn-cancel","course-popup__author-title":"course-popup__author-title","course-popup__author-list":"course-popup__author-list","course-popup__author-item":"course-popup__author-item","course-popup__author-name":"course-popup__author-name","course-popup__btn-add-author":"course-popup__btn-add-author","course-popup__btn-delete-author":"course-popup__btn-delete-author"});
 ;// CONCATENATED MODULE: ./src/components/AdminPanel/subcomponents/CoursePopup.jsx
 
 
@@ -5914,7 +5915,9 @@ const CoursePopup = ({
     className: CoursePopup_block("btn-cancel"),
     type: "button",
     onClick: hidePopup
-  }, "Cancel")), /*#__PURE__*/react.createElement("ul", {
+  }, "Cancel")), /*#__PURE__*/react.createElement("div", {
+    className: CoursePopup_block("author-title")
+  }, "Current authors:"), /*#__PURE__*/react.createElement("ul", {
     className: CoursePopup_block("author-list")
   }, authorsElements)));
 };
@@ -5988,7 +5991,7 @@ const CourseDetails = props => {
 /* harmony default export */ const subcomponents_CourseDetails = (CourseDetails);
 ;// CONCATENATED MODULE: ./src/components/AdminPanel/AdminPanel.module.scss
 // extracted by mini-css-extract-plugin
-/* harmony default export */ const AdminPanel_module = ({"panel__btn-add":"panel__btn-add"});
+/* harmony default export */ const AdminPanel_module = ({"panel":"panel","panel__btn-add":"panel__btn-add"});
 ;// CONCATENATED MODULE: ./src/components/AdminPanel/AdminPanel.jsx
 function AdminPanel_extends() { AdminPanel_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return AdminPanel_extends.apply(this, arguments); }
 
@@ -6024,7 +6027,7 @@ const AdminPanel = () => {
   }, coursesElements, /*#__PURE__*/react.createElement("button", {
     className: AdminPanel_block("btn-add"),
     onClick: showPopup
-  }, "Dodaj nowy kurs"), /*#__PURE__*/react.createElement(subcomponents_CoursePopup, {
+  }, "Add new course"), /*#__PURE__*/react.createElement(subcomponents_CoursePopup, {
     isOpenPopup: isOpenPopup,
     hidePopup: hidePopup,
     isEditMode: false
