@@ -42,10 +42,12 @@ const Header = () => {
       <div className={block("wrapper")}>
         <div className={block("logo-wrapper")} />
         <h1 className={block("title")}>E-learning</h1>
-        {registerButton}
-        <button id='btn-log' className={block("btn")} onClick={handleOnClick}>
-          {setProperlyLabel}
-        </button>
+        <div className={block("buttons-wrapper")}>
+          {registerButton}
+          <button id='btn-log' className={block("btn")} onClick={handleOnClick}>
+            {setProperlyLabel}
+          </button>
+        </div>
         <LoginForm handleOnClose={handleOnClose} isModalOpen={isModalOpen} />
       </div>
     </header>

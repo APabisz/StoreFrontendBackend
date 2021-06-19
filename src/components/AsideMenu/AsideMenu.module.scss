@@ -9,7 +9,12 @@
 
   &__nav-wrapper {
     position: sticky;
-    top: 120px;
+    top: 130px;
+
+    @media (max-width: 640px) {
+      position: relative;
+      top: auto;
+    }
   }
 
   &__title {
@@ -39,7 +44,6 @@
     margin-top: 10px;
     color: #ff8248;
     text-align: center;
-    box-shadow: 0 0 0 1px #ff8248;
     cursor: pointer;
     transition: .2s;
     border-radius: 6px;
@@ -49,24 +53,32 @@
       display: block;
       text-decoration: none;
       color: #ff8248;
+      border-radius: 6px;
+      border: 1px solid #ff8248;
       transition: .2s;
+    }
+
+    & .is-active {
+      color: #fff;
+      border-color: #bb4f21;
+      background-color: #bb4f21;
     }
 
     & a:hover {
       color: #fff;
-    }
-
-    &:hover {
-      color: #fff;
-      box-shadow: 0 0 0 1px #bb4f21;
+      border-color: #bb4f21;
       background-color: #bb4f21;
     }
+
+
+
   }
 
   &__money {
     margin-bottom: 20px;
 
     & span {
+      margin-left: .3em;
       color: #ffbc00;
     }
   }

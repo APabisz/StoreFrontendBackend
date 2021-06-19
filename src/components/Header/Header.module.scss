@@ -9,20 +9,31 @@
   z-index: 10;
 
   &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
     max-width: 1280px;
     margin: 0 auto;
     align-items: center;
     display: flex;
-    height: 80px;
+    min-height: 80px;
     padding: 10px 20px;
     color: #fff;
+
+    @media (max-width: 640px) {
+      min-height: 120px;
+      align-content: center;
+    }
   }
 
   &__logo-wrapper {
     width: 60px;
+    min-width: 60px;
     height: 60px;
     background: url('../../assets/logo.png');
     background-size: contain;
+    background-repeat: no-repeat;
   }
 
   &__title {
@@ -33,6 +44,10 @@
     flex-grow: 1;
     letter-spacing: 1px;
     font-family: 'Dosis', Arial, Helvetica, sans-serif;
+  }
+
+  &__buttons-wrapper {
+    display: flex;
   }
 
   &__btn {
