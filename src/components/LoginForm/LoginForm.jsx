@@ -116,7 +116,12 @@ const LoginForm = ({ handleOnClose, isModalOpen }) => {
       shouldBeCloseOnOutsideClick={true}
       handleSetButtonText={handleSetButtonText}
     >
-      <form className={block()} method='post' onSubmit={handleOnSubmit}>
+      <form
+        className={block()}
+        method='post'
+        onSubmit={handleOnSubmit}
+        autocomplete='off'
+      >
         {validateMessageComponent}
         <div className={block("row")}>
           <label>
