@@ -6133,6 +6133,7 @@ const LoginForm = ({
   const resetStateOfInputs = () => {
     setLogin("");
     setPassword("");
+    setConfirmPassword("");
     setValidateMessage("");
   };
 
