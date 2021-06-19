@@ -37,6 +37,7 @@ const LoginForm = ({ handleOnClose, isModalOpen }) => {
   const resetStateOfInputs = () => {
     setLogin("")
     setPassword("")
+    setConfirmPassword("")
     setValidateMessage("")
   }
 
