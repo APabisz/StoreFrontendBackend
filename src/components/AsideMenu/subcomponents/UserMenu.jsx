@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import bemCssModules from "bem-css-modules"
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import { StoreContext } from "../../../stores/StoreProvider"
 
 import { default as AsideMenuStyles } from "../AsideMenu.module.scss"
@@ -22,11 +22,15 @@ const UserMenu = ({ isUserLogged }) => {
       <nav>
         <ul className={block("list")}>
           <li className={block("link")}>
-            <Link to='/'>Curses available to buy</Link>
+            <NavLink exact={true} activeClassName='is-active' to='/'>
+              Curses available to buy
+            </NavLink>
           </li>
           {isUserLogged && (
             <li className={block("link")}>
-              <Link to='/my-courses'>My courses</Link>
+              <NavLink activeClassName='is-active' to='/my-courses'>
+                My courses
+              </NavLink>
             </li>
           )}
         </ul>
