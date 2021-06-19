@@ -28,7 +28,7 @@ const AdminPanel = () => {
     <section className={block()}>
       {coursesElements}
       <button className={block("btn-add")} onClick={showPopup}>
-        Dodaj nowy kurs
+        Add new course
       </button>
       <CoursePopup
         isOpenPopup={isOpenPopup}
