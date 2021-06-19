@@ -1,9 +1,11 @@
 {
-  "name": "udemy-react-project",
+  "name": "e-learning-platform-project",
   "version": "1.0.0",
-  "description": "My first React app front-end back-end",
+  "description": "E-learning playform as React app front-end with back-end",
   "main": "index.js",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "webpack serve --mode=development",
     "build": "webpack --mode=production"
   },
@@ -12,6 +14,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "bem-css-modules": "^1.4.2",
+    "gh-pages": "^3.2.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.2.0"
