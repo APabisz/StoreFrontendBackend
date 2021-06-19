@@ -6208,7 +6208,8 @@ const LoginForm = ({
   }, /*#__PURE__*/react.createElement("form", {
     className: LoginForm_block(),
     method: "post",
-    onSubmit: handleOnSubmit
+    onSubmit: handleOnSubmit,
+    autocomplete: "off"
   }, validateMessageComponent, /*#__PURE__*/react.createElement("div", {
     className: LoginForm_block("row")
   }, /*#__PURE__*/react.createElement("label", null, "Login:", /*#__PURE__*/react.createElement("input", {
