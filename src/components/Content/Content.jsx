@@ -13,6 +13,7 @@ const ADMIN_TYPE = 1
 
 const Content = () => {
   const { user } = useContext(StoreContext)
+  const { loadingFromServer } = useContext(StoreContext)
 
   const isUserLogged = Boolean(user)
   const isAdmin = user?.accessLevel === ADMIN_TYPE
@@ -29,6 +30,11 @@ const Content = () => {
         )}
         <Redirect to='/' />
       </Switch>
+      {loadingFromServer && (
+        <div className={block("loading-wrapper")}>
+          <div className={block("loading-spinner")}></div>Loading content...
+        </div>
+      )}
     </main>
   )
 }

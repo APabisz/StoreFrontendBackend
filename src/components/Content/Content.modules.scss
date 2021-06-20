@@ -3,4 +3,37 @@
   padding: 15px;
   flex-grow: 1;
   max-width: 1280px;
+
+  &__loading-wrapper {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    color: #fff;
+    font-size: 1.3em;
+  }
+
+  &__loading-spinner {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    background-color: #bb4f21;
+    margin-right: 10px;
+    animation: rotateplane 1s infinite ease-in-out;
+
+    @keyframes rotateplane {
+      0% {
+        transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+      }
+
+      50% {
+        transform: perspective(120px) rotateX(-180deg) rotateY(0deg);
+      }
+
+      100% {
+        transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
+      }
+    }
+  }
 }
