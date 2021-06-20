@@ -5446,15 +5446,18 @@ const StoreProvider = ({
 }) => {
   const [courses, setCourses] = (0,react.useState)([]);
   const [user, setUser] = (0,react.useState)(null);
+  const [loadingFromServer, setLoadingFromServer] = (0,react.useState)(false);
 
   const fetchData = async () => {
     const {
       data
     } = await helpers_request.get("/courses");
+    setLoadingFromServer(false);
     setCourses(data.courses);
   };
 
   (0,react.useEffect)(() => {
+    setLoadingFromServer(true);
     fetchData();
   }, []);
   return /*#__PURE__*/react.createElement(StoreContext.Provider, {
@@ -5462,7 +5465,9 @@ const StoreProvider = ({
       courses,
       setCourses,
       user,
-      setUser
+      setUser,
+      loadingFromServer,
+      setLoadingFromServer
     }
   }, children);
 };
@@ -6037,7 +6042,7 @@ const AdminPanel = () => {
 /* harmony default export */ const AdminPanel_AdminPanel = (AdminPanel);
 ;// CONCATENATED MODULE: ./src/components/Content/Content.modules.scss
 // extracted by mini-css-extract-plugin
-/* harmony default export */ const Content_modules = ({"content":"gVZR3pMwxQaCf37NdLwI-"});
+/* harmony default export */ const Content_modules = ({"content":"gVZR3pMwxQaCf37NdLwI-","content__loading-wrapper":"_2bTA_0IqV57HaK27ca--hY","content__loading-spinner":"eH1Y94WtFz9HzQ3fYTZrn","rotateplane":"_2HN83MfnpfwK2d1AAUv6cP"});
 ;// CONCATENATED MODULE: ./src/components/Content/Content.jsx
 
 
@@ -6053,6 +6058,9 @@ const Content_ADMIN_TYPE = 1;
 const Content = () => {
   const {
     user
+  } = (0,react.useContext)(StoreContext);
+  const {
+    loadingFromServer
   } = (0,react.useContext)(StoreContext);
   const isUserLogged = Boolean(user);
   const isAdmin = (user === null || user === void 0 ? void 0 : user.accessLevel) === Content_ADMIN_TYPE;
@@ -6072,7 +6080,11 @@ const Content = () => {
     render: () => /*#__PURE__*/react.createElement(AdminPanel_AdminPanel, null)
   }), /*#__PURE__*/react.createElement(Redirect, {
     to: "/"
-  })));
+  })), loadingFromServer && /*#__PURE__*/react.createElement("div", {
+    className: Content_block("loading-wrapper")
+  }, /*#__PURE__*/react.createElement("div", {
+    className: Content_block("loading-spinner")
+  }), "Loading content..."));
 };
 
 /* harmony default export */ const Content_Content = (Content);
